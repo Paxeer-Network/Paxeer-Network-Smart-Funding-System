@@ -1,0 +1,20 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oxc-project/oxc/main/npm/oxlint/configuration_schema.json",
+  "rules": {
+    "no-unused-vars": "warn",
+    "no-explicit-any": "warn",
+    "no-console": "warn",
+    "prefer-const": "error",
+    "no-debugger": "error",
+    "eqeqeq": "error"
+  },
+  "ignorePatterns": [
+    "dist",
+    "build",
+    "node_modules",
+    "smartContracts/artifacts",
+    "smartContracts/cache",
+    "graphIndexer/generated",
+    "coverage"
+  ]
+}

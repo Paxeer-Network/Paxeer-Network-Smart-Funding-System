@@ -1,0 +1,36 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "editor.tabSize": 2,
+  "files.eol": "\n",
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "[solidity]": {
+    "editor.tabSize": 4
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/pnpm-lock.yaml": true,
+    "smartContracts/artifacts": true,
+    "smartContracts/cache": true,
+    "graphIndexer/generated": true,
+    "graphIndexer/build": true,
+    "@icons": true,
+    "coverage": true
+  },
+  "files.associations": {
+    "*.sol": "solidity"
+  },
+  "cSpell.enabled": true
+}

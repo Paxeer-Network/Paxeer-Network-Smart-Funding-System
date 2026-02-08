@@ -1,0 +1,27 @@
+{
+  "project": "paxeer-funding",
+  "description": "Paxeer Funding Monorepo — Web3 smart wallet onboarding platform",
+  "instructions": [
+    "This is a pnpm monorepo. Always use pnpm, never npm or yarn.",
+    "Smart contracts use ZERO external dependencies — all libs/interfaces are custom.",
+    "All comments must be in English.",
+    "TypeScript strict mode, ES2022 target, bundler module resolution.",
+    "Vue 3 Composition API with <script setup>.",
+    "The Chrome extension provider runs as a world: MAIN content script (Manifest V3).",
+    "Backend handles auth + user management only. Wallet stats come from user-stats SDK REST API.",
+    "Paxeer Network chain ID is 125. RPC: https://public-rpc.paxeer.app/rpc",
+    "Use Conventional Commits for git messages."
+  ],
+  "ignore": [
+    "node_modules",
+    "dist",
+    "build",
+    "pnpm-lock.yaml",
+    "smartContracts/artifacts",
+    "smartContracts/cache",
+    "graphIndexer/generated",
+    "@icons",
+    "@assets",
+    "coverage"
+  ]
+}

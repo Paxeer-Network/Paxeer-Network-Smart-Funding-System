@@ -1,0 +1,559 @@
+export const SSORegistryAbi = [
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: '_owner',
+        type: 'address',
+      },
+    ],
+    stateMutability: 'nonpayable',
+    type: 'constructor',
+  },
+  {
+    inputs: [],
+    name: 'CallerNotWalletOrOwner',
+    type: 'error',
+  },
+  {
+    inputs: [],
+    name: 'InvalidDuration',
+    type: 'error',
+  },
+  {
+    inputs: [],
+    name: 'InvalidPermissions',
+    type: 'error',
+  },
+  {
+    inputs: [],
+    name: 'InvalidSigner',
+    type: 'error',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'wallet',
+        type: 'address',
+      },
+    ],
+    name: 'MaxSessionKeysReached',
+    type: 'error',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'owner',
+        type: 'address',
+      },
+    ],
+    name: 'OwnableInvalidOwner',
+    type: 'error',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'account',
+        type: 'address',
+      },
+    ],
+    name: 'OwnableUnauthorizedAccount',
+    type: 'error',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'signer',
+        type: 'address',
+      },
+    ],
+    name: 'SessionKeyAlreadyExists',
+    type: 'error',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'signer',
+        type: 'address',
+      },
+    ],
+    name: 'SessionKeyNotFound',
+    type: 'error',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'previousOwner',
+        type: 'address',
+      },
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'newOwner',
+        type: 'address',
+      },
+    ],
+    name: 'OwnershipTransferred',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'wallet',
+        type: 'address',
+      },
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'signer',
+        type: 'address',
+      },
+      {
+        indexed: false,
+        internalType: 'uint48',
+        name: 'validAfter',
+        type: 'uint48',
+      },
+      {
+        indexed: false,
+        internalType: 'uint48',
+        name: 'validUntil',
+        type: 'uint48',
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'permissions',
+        type: 'uint256',
+      },
+    ],
+    name: 'SessionKeyRegistered',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'wallet',
+        type: 'address',
+      },
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'signer',
+        type: 'address',
+      },
+    ],
+    name: 'SessionKeyRevoked',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'wallet',
+        type: 'address',
+      },
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'signer',
+        type: 'address',
+      },
+      {
+        indexed: false,
+        internalType: 'uint48',
+        name: 'validUntil',
+        type: 'uint48',
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'permissions',
+        type: 'uint256',
+      },
+    ],
+    name: 'SessionKeyUpdated',
+    type: 'event',
+  },
+  {
+    inputs: [],
+    name: 'MAX_KEYS_PER_WALLET',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'MAX_SESSION_DURATION',
+    outputs: [
+      {
+        internalType: 'uint48',
+        name: '',
+        type: 'uint48',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'PERMISSION_ALL',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'PERMISSION_CALL_CONTRACT',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'PERMISSION_EXECUTE',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'PERMISSION_EXECUTE_BATCH',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'PERMISSION_TRANSFER_ERC20',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'PERMISSION_TRANSFER_ETH',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
+    ],
+    name: 'authorizedCallers',
+    outputs: [
+      {
+        internalType: 'bool',
+        name: '',
+        type: 'bool',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'wallet',
+        type: 'address',
+      },
+    ],
+    name: 'getActiveSigners',
+    outputs: [
+      {
+        internalType: 'address[]',
+        name: '',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'wallet',
+        type: 'address',
+      },
+      {
+        internalType: 'address',
+        name: 'signer',
+        type: 'address',
+      },
+    ],
+    name: 'getSessionKey',
+    outputs: [
+      {
+        components: [
+          {
+            internalType: 'address',
+            name: 'signer',
+            type: 'address',
+          },
+          {
+            internalType: 'uint48',
+            name: 'validAfter',
+            type: 'uint48',
+          },
+          {
+            internalType: 'uint48',
+            name: 'validUntil',
+            type: 'uint48',
+          },
+          {
+            internalType: 'uint256',
+            name: 'permissions',
+            type: 'uint256',
+          },
+          {
+            internalType: 'bool',
+            name: 'active',
+            type: 'bool',
+          },
+        ],
+        internalType: 'struct ISSORegistry.SessionKey',
+        name: '',
+        type: 'tuple',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'owner',
+    outputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'signer',
+        type: 'address',
+      },
+      {
+        internalType: 'uint48',
+        name: 'validAfter',
+        type: 'uint48',
+      },
+      {
+        internalType: 'uint48',
+        name: 'validUntil',
+        type: 'uint48',
+      },
+      {
+        internalType: 'uint256',
+        name: 'permissions',
+        type: 'uint256',
+      },
+    ],
+    name: 'registerSessionKey',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'wallet',
+        type: 'address',
+      },
+      {
+        internalType: 'address',
+        name: 'signer',
+        type: 'address',
+      },
+      {
+        internalType: 'uint48',
+        name: 'validAfter',
+        type: 'uint48',
+      },
+      {
+        internalType: 'uint48',
+        name: 'validUntil',
+        type: 'uint48',
+      },
+      {
+        internalType: 'uint256',
+        name: 'permissions',
+        type: 'uint256',
+      },
+    ],
+    name: 'registerSessionKeyFor',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'renounceOwnership',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'signer',
+        type: 'address',
+      },
+    ],
+    name: 'revokeSessionKey',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'wallet',
+        type: 'address',
+      },
+      {
+        internalType: 'address',
+        name: 'signer',
+        type: 'address',
+      },
+    ],
+    name: 'revokeSessionKeyFor',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'caller',
+        type: 'address',
+      },
+      {
+        internalType: 'bool',
+        name: 'authorized',
+        type: 'bool',
+      },
+    ],
+    name: 'setAuthorizedCaller',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'newOwner',
+        type: 'address',
+      },
+    ],
+    name: 'transferOwnership',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'wallet',
+        type: 'address',
+      },
+      {
+        internalType: 'address',
+        name: 'signer',
+        type: 'address',
+      },
+      {
+        internalType: 'uint256',
+        name: 'requiredPermissions',
+        type: 'uint256',
+      },
+    ],
+    name: 'validateSessionKey',
+    outputs: [
+      {
+        internalType: 'bool',
+        name: '',
+        type: 'bool',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+] as const;

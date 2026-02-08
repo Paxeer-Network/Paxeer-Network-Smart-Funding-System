@@ -1,0 +1,62 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build All",
+      "type": "shell",
+      "command": "pnpm build",
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": ["$tsc"]
+    },
+    {
+      "label": "Dev: Frontend",
+      "type": "shell",
+      "command": "pnpm --filter @paxeer/user-interface dev",
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Dev: Backend",
+      "type": "shell",
+      "command": "pnpm --filter @paxeer/backend-servers dev",
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Dev: Workers",
+      "type": "shell",
+      "command": "pnpm --filter @paxeer/service-workers dev",
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Build: Extension",
+      "type": "shell",
+      "command": "pnpm --filter @paxeer/chrome-extension build",
+      "group": "build",
+      "problemMatcher": ["$tsc"]
+    },
+    {
+      "label": "Test: Smart Contracts",
+      "type": "shell",
+      "command": "npx hardhat test",
+      "options": { "cwd": "${workspaceFolder}/smartContracts" },
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "Lint All",
+      "type": "shell",
+      "command": "pnpm lint",
+      "group": "test",
+      "problemMatcher": ["$eslint-stylish"]
+    },
+    {
+      "label": "Typecheck All",
+      "type": "shell",
+      "command": "pnpm typecheck",
+      "group": "test",
+      "problemMatcher": ["$tsc"]
+    }
+  ]
+}

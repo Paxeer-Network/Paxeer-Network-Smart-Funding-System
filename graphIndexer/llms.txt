@@ -1,0 +1,167 @@
+# @paxeer/smart-wallets
+
+> TypeScript SDK for Paxeer Smart Wallet system – WalletFactory, EventEmitter, SSORegistry
+
+This is a TypeScript SDK for interacting with EVM smart contracts.
+It provides typed ABIs, React/Wagmi hooks, non-React actions, contract constants,
+and a Graph Protocol subgraph for indexing.
+
+## Tech Stack
+- TypeScript 5.3+
+- wagmi v2 (React hooks)
+- viem v2 (low-level Ethereum interface)
+- Graph Protocol (subgraph indexing)
+
+## Networks
+  - Paxeer Network (chainId: 125, rpc: https://public-rpc.paxeer.app/rpc)
+
+## Contracts
+
+  ## EventEmitter
+  Addresses: paxeer-network=0x5fF05F82928C9f742AAF8Ac03dBEFbeaDC493a58
+
+  ### Read Functions
+    - factory()
+    - isRegisteredWallet(wallet: address)
+    - owner()
+    - paused()
+    - totalTransactions()
+    - walletOwnerOf(wallet: address)
+
+  ### Write Functions
+    - deregisterWallet(wallet: address)
+    - emitTransaction(to: address, value: uint256, data: bytes, txNonce: uint256, success: bool, returnData: bytes)
+    - pause()
+    - registerWallet(wallet: address, walletOwner: address)
+    - renounceOwnership()
+    - setFactory(_factory: address)
+    - transferOwnership(newOwner: address)
+    - unpause()
+
+  ### Events
+    - OwnershipTransferred(indexed previousOwner: address, indexed newOwner: address)
+    - Paused(account: address)
+    - TransactionExecuted(indexed wallet: address, indexed to: address, value: uint256, data: bytes, nonce: uint256, timestamp: uint256, success: bool, returnData: bytes)
+    - Unpaused(account: address)
+    - WalletDeregistered(indexed wallet: address)
+    - WalletRegistered(indexed wallet: address, indexed owner: address)
+
+  ## WalletFactory
+  Addresses: paxeer-network=0xec0f990c01a3571259Be6183Ec8ED25a0aC67AD6
+
+  ### Read Functions
+    - eventEmitter()
+    - getWallet(owner_: address)
+    - implementation()
+    - isWallet(wallet: address)
+    - owner()
+    - paused()
+    - predictWalletAddress(owner_: address, salt: bytes32)
+    - ssoRegistry()
+    - totalWallets()
+    - unassignedWalletAt(index: uint256)
+    - unassignedWalletCount()
+
+  ### Write Functions
+    - assignWallet(wallet: address, newOwner: address)
+    - createWallet(owner_: address)
+    - createWalletWithSalt(owner_: address, salt: bytes32)
+    - deployWallets(count: uint256)
+    - pause()
+    - renounceOwnership()
+    - setEventEmitter(newEventEmitter: address)
+    - setImplementation(newImplementation: address)
+    - setSSORegistry(newSSORegistry: address)
+    - transferOwnership(newOwner: address)
+    - unpause()
+
+  ### Events
+    - OwnershipTransferred(indexed previousOwner: address, indexed newOwner: address)
+    - Paused(account: address)
+    - Unpaused(account: address)
+    - WalletAssigned(indexed wallet: address, indexed owner: address)
+    - WalletCreated(indexed owner: address, indexed wallet: address, salt: bytes32)
+    - WalletPreDeployed(indexed wallet: address, index: uint256)
+
+  ## SSORegistry
+  Addresses: paxeer-network=0x6cf9392abc7947Dbc9289Fd1F65c4a4B9d423332
+
+  ### Read Functions
+    - MAX_KEYS_PER_WALLET()
+    - MAX_SESSION_DURATION()
+    - PERMISSION_ALL()
+    - PERMISSION_CALL_CONTRACT()
+    - PERMISSION_EXECUTE()
+    - PERMISSION_EXECUTE_BATCH()
+    - PERMISSION_TRANSFER_ERC20()
+    - PERMISSION_TRANSFER_ETH()
+    - authorizedCallers(arg0: address)
+    - getActiveSigners(wallet: address)
+    - getSessionKey(wallet: address, signer: address)
+    - owner()
+    - validateSessionKey(wallet: address, signer: address, requiredPermissions: uint256)
+
+  ### Write Functions
+    - registerSessionKey(signer: address, validAfter: uint48, validUntil: uint48, permissions: uint256)
+    - registerSessionKeyFor(wallet: address, signer: address, validAfter: uint48, validUntil: uint48, permissions: uint256)
+    - renounceOwnership()
+    - revokeSessionKey(signer: address)
+    - revokeSessionKeyFor(wallet: address, signer: address)
+    - setAuthorizedCaller(caller: address, authorized: bool)
+    - transferOwnership(newOwner: address)
+
+  ### Events
+    - OwnershipTransferred(indexed previousOwner: address, indexed newOwner: address)
+    - SessionKeyRegistered(indexed wallet: address, indexed signer: address, validAfter: uint48, validUntil: uint48, permissions: uint256)
+    - SessionKeyRevoked(indexed wallet: address, indexed signer: address)
+    - SessionKeyUpdated(indexed wallet: address, indexed signer: address, validUntil: uint48, permissions: uint256)
+
+  ## SmartWallet
+  Addresses: paxeer-network=0x444490870B799544d841625E7a040b41F17FCe21
+
+  ### Read Functions
+    - DOMAIN_SEPARATOR()
+    - DOMAIN_TYPEHASH()
+    - EXECUTE_TYPEHASH()
+    - eventEmitter()
+    - factory()
+    - getBalance()
+    - getMetadata()
+    - getNonce()
+    - getTokenBalance(token: address)
+    - getTransaction(txNonce: uint256)
+    - isAssigned()
+    - paused()
+    - ssoRegistry()
+    - walletOwner()
+
+  ### Write Functions
+    - assignOwner(newOwner: address)
+    - execute(to: address, value: uint256, data: bytes)
+    - executeBatch(targets: address[], values: uint256[], datas: bytes[])
+    - executeWithSignature(to: address, value: uint256, data: bytes, deadline: uint256, signature: bytes)
+    - initialize(owner_: address, eventEmitter_: address, ssoRegistry_: address)
+    - pause()
+    - setMetadata(metadata_: tuple)
+    - transferOwnership(newOwner: address)
+    - unpause()
+
+  ### Events
+    - BatchExecuted(count: uint256, startNonce: uint256)
+    - Executed(indexed to: address, value: uint256, nonce: uint256, success: bool)
+    - MetadataUpdated(argusId: string, indexed onchainId: address, userAlias: string)
+    - OwnerAssigned(indexed owner: address)
+    - Paused(account: address)
+    - Received(indexed from: address, value: uint256)
+    - SessionKeyAuthorized(indexed signer: address)
+    - SessionKeyRevoked(indexed signer: address)
+    - Unpaused(account: address)
+
+## Module Structure
+- src/abis/        Typed ABI exports (as const)
+- src/types/       TypeScript interfaces
+- src/hooks/       React hooks (useRead*, useWrite*, useSimulate*, useWatch*)
+- src/actions/     Non-React contract actions
+- src/constants/   Addresses, chain configs, RPC URLs
+- subgraph/        Graph Protocol subgraph
+- docs/            Markdown API docs

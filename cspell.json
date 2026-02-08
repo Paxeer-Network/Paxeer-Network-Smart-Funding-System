@@ -1,0 +1,43 @@
+{
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/packages/cspell-types/cspell.schema.json",
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "paxeer",
+    "paxscan",
+    "sidiora",
+    "argus",
+    "usdl",
+    "viem",
+    "wagmi",
+    "moralis",
+    "hardhat",
+    "solidity",
+    "chainid",
+    "txhash",
+    "pubkey",
+    "pbkdf",
+    "crxjs",
+    "composables",
+    "pinia",
+    "tailwindcss",
+    "subgraph",
+    "mnemonic",
+    "derivation",
+    "keccak",
+    "secp256k1",
+    "onchain"
+  ],
+  "ignorePaths": [
+    "node_modules",
+    "dist",
+    "build",
+    "pnpm-lock.yaml",
+    "smartContracts/artifacts",
+    "smartContracts/cache",
+    "graphIndexer/generated",
+    "@icons",
+    "@assets",
+    "coverage"
+  ]
+}

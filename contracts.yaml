@@ -1,0 +1,39 @@
+project:
+  name: "paxeer-smart-wallets-sdk"
+  description: "TypeScript SDK for Paxeer Smart Wallet system – WalletFactory, EventEmitter, SSORegistry"
+
+networks:
+  paxeer-network:
+    chainId: 125
+    rpc: "https://public-rpc.paxeer.app/rpc"
+    explorer: "https://paxscan.paxeer.app"
+    name: "Paxeer Network"
+
+contracts:
+  - name: EventEmitter
+    abi: ./smartContracts/artifacts/contracts/core/EventEmitter.sol/EventEmitter.json
+    addresses:
+      paxeer-network: "0x5fF05F82928C9f742AAF8Ac03dBEFbeaDC493a58"
+    startBlock:
+      paxeer-network: 500000
+
+  - name: WalletFactory
+    abi: ./smartContracts/artifacts/contracts/core/WalletFactory.sol/WalletFactory.json
+    addresses:
+      paxeer-network: "0xec0f990c01a3571259Be6183Ec8ED25a0aC67AD6"
+    startBlock:
+      paxeer-network: 500000
+
+  - name: SSORegistry
+    abi: ./smartContracts/artifacts/contracts/core/SSORegistry.sol/SSORegistry.json
+    addresses:
+      paxeer-network: "0x6cf9392abc7947Dbc9289Fd1F65c4a4B9d423332"
+    startBlock:
+      paxeer-network: 500000
+
+  - name: SmartWallet
+    abi: ./smartContracts/artifacts/contracts/core/SmartWallet.sol/SmartWallet.json
+    addresses:
+      paxeer-network: "0x444490870B799544d841625E7a040b41F17FCe21"
+    startBlock:
+      paxeer-network: 500000

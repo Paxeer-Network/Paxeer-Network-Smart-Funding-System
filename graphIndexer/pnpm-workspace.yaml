@@ -1,0 +1,10 @@
+packages:
+  - .
+  - subgraph
+
+onlyBuiltDependencies:
+  - bufferutil
+  - keccak
+  - protobufjs
+  - secp256k1
+  - utf-8-validate

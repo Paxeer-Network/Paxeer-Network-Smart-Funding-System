@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "vue.volar",
+    "bradlc.vscode-tailwindcss",
+    "juanblanco.solidity",
+    "streetsidesoftware.code-spell-checker",
+    "editorconfig.editorconfig",
+    "ms-vscode.vscode-typescript-next",
+    "graphql.vscode-graphql"
+  ],
+  "unwantedRecommendations": []
+}

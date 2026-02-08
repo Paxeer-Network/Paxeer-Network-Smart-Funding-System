@@ -1,0 +1,237 @@
+type EventEmitterOwnershipTransferred @entity(immutable: true) {
+  id: ID!
+  previousOwner: Bytes!
+  newOwner: Bytes!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type EventEmitterPaused @entity(immutable: true) {
+  id: ID!
+  account: Bytes!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type EventEmitterTransactionExecuted @entity(immutable: true) {
+  id: ID!
+  wallet: Bytes!
+  to: Bytes!
+  value: BigInt!
+  data: Bytes!
+  nonce: BigInt!
+  timestamp: BigInt!
+  success: Boolean!
+  returnData: Bytes!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type EventEmitterUnpaused @entity(immutable: true) {
+  id: ID!
+  account: Bytes!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type EventEmitterWalletDeregistered @entity(immutable: true) {
+  id: ID!
+  wallet: Bytes!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type EventEmitterWalletRegistered @entity(immutable: true) {
+  id: ID!
+  wallet: Bytes!
+  owner: Bytes!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type WalletFactoryOwnershipTransferred @entity(immutable: true) {
+  id: ID!
+  previousOwner: Bytes!
+  newOwner: Bytes!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type WalletFactoryPaused @entity(immutable: true) {
+  id: ID!
+  account: Bytes!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type WalletFactoryUnpaused @entity(immutable: true) {
+  id: ID!
+  account: Bytes!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type WalletFactoryWalletAssigned @entity(immutable: true) {
+  id: ID!
+  wallet: Bytes!
+  owner: Bytes!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type WalletFactoryWalletCreated @entity(immutable: true) {
+  id: ID!
+  owner: Bytes!
+  wallet: Bytes!
+  salt: Bytes!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type WalletFactoryWalletPreDeployed @entity(immutable: true) {
+  id: ID!
+  wallet: Bytes!
+  index: BigInt!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SSORegistryOwnershipTransferred @entity(immutable: true) {
+  id: ID!
+  previousOwner: Bytes!
+  newOwner: Bytes!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SSORegistrySessionKeyRegistered @entity(immutable: true) {
+  id: ID!
+  wallet: Bytes!
+  signer: Bytes!
+  validAfter: BigInt!
+  validUntil: BigInt!
+  permissions: BigInt!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SSORegistrySessionKeyRevoked @entity(immutable: true) {
+  id: ID!
+  wallet: Bytes!
+  signer: Bytes!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SSORegistrySessionKeyUpdated @entity(immutable: true) {
+  id: ID!
+  wallet: Bytes!
+  signer: Bytes!
+  validUntil: BigInt!
+  permissions: BigInt!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SmartWalletBatchExecuted @entity(immutable: true) {
+  id: ID!
+  count: BigInt!
+  startNonce: BigInt!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SmartWalletExecuted @entity(immutable: true) {
+  id: ID!
+  to: Bytes!
+  value: BigInt!
+  nonce: BigInt!
+  success: Boolean!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SmartWalletMetadataUpdated @entity(immutable: true) {
+  id: ID!
+  argusId: String!
+  onchainId: Bytes!
+  userAlias: String!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SmartWalletOwnerAssigned @entity(immutable: true) {
+  id: ID!
+  owner: Bytes!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SmartWalletPaused @entity(immutable: true) {
+  id: ID!
+  account: Bytes!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SmartWalletReceived @entity(immutable: true) {
+  id: ID!
+  from: Bytes!
+  value: BigInt!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SmartWalletSessionKeyAuthorized @entity(immutable: true) {
+  id: ID!
+  signer: Bytes!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SmartWalletSessionKeyRevoked @entity(immutable: true) {
+  id: ID!
+  signer: Bytes!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SmartWalletUnpaused @entity(immutable: true) {
+  id: ID!
+  account: Bytes!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Transaction @entity {
+  id: ID!
+  blockNumber: BigInt!
+  timestamp: BigInt!
+  gasUsed: BigInt
+  gasPrice: BigInt
+}

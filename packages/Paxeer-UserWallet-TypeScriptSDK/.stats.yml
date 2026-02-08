@@ -1,0 +1,4 @@
+# Package stats
+package: @paxeer-network/user-stats-typescript-sdk
+generated: 2026-02-08
+generator: sdk-gen@1.0.0

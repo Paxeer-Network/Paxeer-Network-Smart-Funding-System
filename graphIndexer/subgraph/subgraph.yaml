@@ -1,0 +1,149 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: EventEmitter
+    network: paxeer-network
+    source:
+      address: "0x5fF05F82928C9f742AAF8Ac03dBEFbeaDC493a58"
+      abi: EventEmitter
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - OwnershipTransferred
+        - Paused
+        - TransactionExecuted
+        - Unpaused
+        - WalletDeregistered
+        - WalletRegistered
+      abis:
+        - name: EventEmitter
+          file: ./abis/EventEmitter.json
+      eventHandlers:
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Paused(address)
+          handler: handlePaused
+        - event: TransactionExecuted(indexed address,indexed address,uint256,bytes,uint256,uint256,bool,bytes)
+          handler: handleTransactionExecuted
+        - event: Unpaused(address)
+          handler: handleUnpaused
+        - event: WalletDeregistered(indexed address)
+          handler: handleWalletDeregistered
+        - event: WalletRegistered(indexed address,indexed address)
+          handler: handleWalletRegistered
+      file: ./src/mappings/event-emitter.ts
+  - kind: ethereum
+    name: WalletFactory
+    network: paxeer-network
+    source:
+      address: "0xec0f990c01a3571259Be6183Ec8ED25a0aC67AD6"
+      abi: WalletFactory
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - OwnershipTransferred
+        - Paused
+        - Unpaused
+        - WalletAssigned
+        - WalletCreated
+        - WalletPreDeployed
+      abis:
+        - name: WalletFactory
+          file: ./abis/WalletFactory.json
+      eventHandlers:
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Paused(address)
+          handler: handlePaused
+        - event: Unpaused(address)
+          handler: handleUnpaused
+        - event: WalletAssigned(indexed address,indexed address)
+          handler: handleWalletAssigned
+        - event: WalletCreated(indexed address,indexed address,bytes32)
+          handler: handleWalletCreated
+        - event: WalletPreDeployed(indexed address,uint256)
+          handler: handleWalletPreDeployed
+      file: ./src/mappings/wallet-factory.ts
+  - kind: ethereum
+    name: SSORegistry
+    network: paxeer-network
+    source:
+      address: "0x6cf9392abc7947Dbc9289Fd1F65c4a4B9d423332"
+      abi: SSORegistry
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - OwnershipTransferred
+        - SessionKeyRegistered
+        - SessionKeyRevoked
+        - SessionKeyUpdated
+      abis:
+        - name: SSORegistry
+          file: ./abis/SSORegistry.json
+      eventHandlers:
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: SessionKeyRegistered(indexed address,indexed address,uint48,uint48,uint256)
+          handler: handleSessionKeyRegistered
+        - event: SessionKeyRevoked(indexed address,indexed address)
+          handler: handleSessionKeyRevoked
+        - event: SessionKeyUpdated(indexed address,indexed address,uint48,uint256)
+          handler: handleSessionKeyUpdated
+      file: ./src/mappings/ssoregistry.ts
+  - kind: ethereum
+    name: SmartWallet
+    network: paxeer-network
+    source:
+      address: "0x444490870B799544d841625E7a040b41F17FCe21"
+      abi: SmartWallet
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - BatchExecuted
+        - Executed
+        - MetadataUpdated
+        - OwnerAssigned
+        - Paused
+        - Received
+        - SessionKeyAuthorized
+        - SessionKeyRevoked
+        - Unpaused
+      abis:
+        - name: SmartWallet
+          file: ./abis/SmartWallet.json
+      eventHandlers:
+        - event: BatchExecuted(uint256,uint256)
+          handler: handleBatchExecuted
+        - event: Executed(indexed address,uint256,uint256,bool)
+          handler: handleExecuted
+        - event: MetadataUpdated(string,indexed address,string)
+          handler: handleMetadataUpdated
+        - event: OwnerAssigned(indexed address)
+          handler: handleOwnerAssigned
+        - event: Paused(address)
+          handler: handlePaused
+        - event: Received(indexed address,uint256)
+          handler: handleReceived
+        - event: SessionKeyAuthorized(indexed address)
+          handler: handleSessionKeyAuthorized
+        - event: SessionKeyRevoked(indexed address)
+          handler: handleSessionKeyRevoked
+        - event: Unpaused(address)
+          handler: handleUnpaused
+      file: ./src/mappings/smart-wallet.ts

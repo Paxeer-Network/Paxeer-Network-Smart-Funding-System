@@ -1,0 +1,15 @@
+{
+  "note": "MCP server configuration — add this to your MCP client config",
+  "mcpServers": {
+    "paxeer-user-stats-api": {
+      "command": "node",
+      "args": [
+        "dist/mcp/server.js"
+      ],
+      "env": {
+        "API_BASE_URL": "https://us-east-1.user-stats.sidiora.exchange",
+        "API_TOKEN": "<your-token>"
+      }
+    }
+  }
+}

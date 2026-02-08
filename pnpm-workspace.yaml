@@ -1,0 +1,9 @@
+packages:
+  - "packages/*"
+  - "smartContracts"
+  - "userInterface"
+  - "backendServers"
+  - "serviceWorkers"
+  - "graphIndexer"
+  - "chainConfigurations"
+  - "chromeExtension"
